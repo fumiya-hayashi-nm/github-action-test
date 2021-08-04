@@ -23,7 +23,6 @@ jobs:
         uses: actions/setup-go@v2
         with:
           go-version: 1.16
-        working-directory: ./app/src
       # 依存パッケージのインストール
       - name: Get dependencies
         run:  go get -v -t -d ./...
@@ -53,5 +52,3 @@ jobs:
           fail_on_error: true
           # lintを適用する範囲
           filter_mode: nofilter
-          # lintを適用するディレクトリを指定
-          workdir: app/src

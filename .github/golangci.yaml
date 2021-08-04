@@ -6,7 +6,7 @@ run:
   test: true
   # linterを実行しないディレクトリ
   skip-dirs:
-    - sub
+    - minus
   skip-dirs-use-default: true
   # linterを並列実行する
   allow-parallel-runners: true
