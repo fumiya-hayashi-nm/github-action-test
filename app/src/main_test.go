@@ -9,7 +9,7 @@ func TestAdditional(t *testing.T) {
 	y := 2
 	result := addition(x,y)
 
-	if result == x - y {
+	if result == x + y {
 		t.Error("足し算間違えてるよ〜")
 	}
 }
