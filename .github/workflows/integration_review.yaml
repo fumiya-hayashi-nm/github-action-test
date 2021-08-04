@@ -40,15 +40,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       # Lintチェックを実行しReviewdogでコードレビューする
-      - name: 確認
-        run: echo "${{ github.workspace }} aaaa"
       - name: golangci-lint
         uses: reviewdog/action-golangci-lint@v1
         # reviewdog actionのオプションを設定
         with:
           github_token: ${{ github.token }}
           # gilanci-lintのオプション設定ファイルを指定（作業dirからの相対パス）
-          golangci_lint_flags: "--config=../../.github/golangci.yaml"
+          golangci_lint_flags: "--config=${{ github.workspace }}/.github/golangci.yaml"
           # go modがあるdirを作業dirにする
           workdir: app/src
           reporter: github-pr-review
