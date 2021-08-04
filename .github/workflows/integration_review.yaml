@@ -53,5 +53,4 @@ jobs:
           fail_on_error: true
           # lintを適用する範囲
           filter_mode: nofilter
-          # 警告でステータスを失敗にする
-          level: warning
+          level: info
