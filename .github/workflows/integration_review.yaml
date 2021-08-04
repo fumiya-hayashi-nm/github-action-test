@@ -40,6 +40,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       # Lintチェックを実行しReviewdogでコードレビューする
+      - name: 確認
+        run: ${{ github.action_path }}
       - name: golangci-lint
         uses: reviewdog/action-golangci-lint@v1
         # reviewdog actionのオプションを設定
