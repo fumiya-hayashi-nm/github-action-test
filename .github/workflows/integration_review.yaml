@@ -46,10 +46,12 @@ jobs:
         with:
           github_token: ${{ github.token }}
           # gilanci-lintのオプション設定ファイルを指定
-          golangci_lint_flags: "--config=.github/golangci.yaml"
+          golangci_lint_flags: "--config=.github/golangci.yaml ./app/src"
           workdir: app/src/
           reporter: github-pr-review
           # lint指摘がある場合はこのジョブを失敗とする
           fail_on_error: true
           # lintを適用する範囲
           filter_mode: nofilter
+          # 警告でステータスを失敗にする
+          level: error
