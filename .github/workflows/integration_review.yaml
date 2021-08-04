@@ -42,6 +42,7 @@ jobs:
       # Lintチェックを実行しReviewdogでコードレビューする
       - name: golangci-lint
         uses: reviewdog/action-golangci-lint@v1
+        working-directory: app/src
         # reviewdog actionのオプションを設定
         with:
           github_token: ${{ github.token }}
