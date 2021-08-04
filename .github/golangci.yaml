@@ -1,0 +1,40 @@
+# golangci-lint の設定
+# https://golangci-lint.run/usage/configuration/
+
+run:
+  # テストファイルを含む
+  test: true
+  # linterを実行しないディレクトリ
+  skip-dirs:
+    - sub
+  skip-dirs-use-default: true
+  # linterを並列実行する
+  allow-parallel-runners: true
+
+# 適用するlinterの設定
+linters:
+  # 全てのlinterを適用する https://golangci-lint.run/usage/linters
+  enable-all: true
+  # 不要なlinterがあれば、disableに追加する
+  disable:
+    - golint
+    - interfacer
+    - maligned
+    - scopelint
+
+# 各Linterの設定
+linters-settings:
+  govet:
+    check-shadowing: true
+  misspell:
+    locale: US
+  errcheck:
+    # 型アサーションのチェックしない
+    check-type-assertions: false
+    # 空白のチェックしない
+    check-blank: false
+
+# lint-issueの設定
+issues:
+  exclude-use-default: false
+  max-same-issues: 0

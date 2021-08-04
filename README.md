@@ -1,0 +1,1 @@
+[![Test](https://github.com/fumiya-hayashi-nm/github-action-test/actions/workflows/test.yml/badge.svg)](https://github.com/fumiya-hayashi-nm/github-action-test/actions/workflows/test.yml)

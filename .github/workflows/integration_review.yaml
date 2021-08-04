@@ -1,0 +1,57 @@
+
+name: Integration Review
+
+# トリガーの設定
+on: pull_request
+
+# ジョブの設定
+jobs:
+  test:
+    name: Test
+    # Runnerの設定
+    runs-on: ubuntu-18.04
+    # 環境変数の設定
+    env:
+      TEST_ENV: Local
+    # Stepの定義
+    steps:
+      # リポジトリのチェックアウト
+      - name: Checkout
+        uses: actions/checkout@v2
+      # Goのセットアップ
+      - name: Set up Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: 1.16
+        working-directory: ./app/src
+      # 依存パッケージのインストール
+      - name: Get dependencies
+        run:  go get -v -t -d ./...
+        working-directory: app/src
+      # 全ての単体テストを実行する
+      - name: Run unit test
+        run: go test -v ./...
+        working-directory: app/src
+
+  golangci-lint:
+    name: golangci-lint
+    runs-on: ubuntu-18.04
+    steps:
+      # リポジトリのチェックアウト
+      - name: Checkout
+        uses: actions/checkout@v2
+      # Lintチェックを実行しReviewdogでコードレビューする
+      - name: golangci-lint
+        uses: reviewdog/action-golangci-lint@v1
+        # reviewdog actionのオプションを設定
+        with:
+          github_token: ${{ github.token }}
+          # gilanci-lintのオプション設定ファイルを指定
+          golangci_lint_flags: "--config=.github/golangci.yaml"
+          reporter: github-pr-review
+          # lint指摘がある場合はこのジョブを失敗とする
+          fail_on_error: true
+          # lintを適用する範囲
+          filter_mode: nofilter
+          # lintを適用するディレクトリを指定
+          workdir: app/src
