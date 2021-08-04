@@ -10,7 +10,7 @@ func TestSubSubtraction(t *testing.T) {
 	y := 1
 	result := subtraction(x,y)
 
-	if result == x - y {
+	if result != x - y {
 		t.Error("引き算間違えてるよ〜")
 	}
 }
