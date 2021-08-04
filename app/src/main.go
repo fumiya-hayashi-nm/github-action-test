@@ -7,11 +7,11 @@ func main() {
 
 	x := 3
 	y := 6
-	result := addition(x, y)
+	result := plus(x, y)
 	fmt.Printf("%d+%d=%d", x, y, result)
 }
 
-// addition 足し算する
-func addition(x int, y int) int {
+// plus 足し算する
+func plus(x int, y int) int {
 	return x + y
 }

@@ -4,10 +4,10 @@ import (
 	"testing"
 )
 
-func TestAdditional(t *testing.T) {
+func TestPlus(t *testing.T) {
 	x := 1
 	y := 2
-	result := addition(x,y)
+	result := plus(x,y)
 
 	if result != x + y {
 		t.Error("足し算間違えてるよ〜")
