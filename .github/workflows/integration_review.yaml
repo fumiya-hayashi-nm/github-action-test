@@ -47,6 +47,7 @@ jobs:
           github_token: ${{ github.token }}
           # gilanci-lintのオプション設定ファイルを指定
           golangci_lint_flags: "--config=.github/golangci.yaml"
+          workdir: app/src/
           reporter: github-pr-review
           # lint指摘がある場合はこのジョブを失敗とする
           fail_on_error: true
