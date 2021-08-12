@@ -46,7 +46,7 @@ jobs:
         with:
           github_token: ${{ github.token }}
           # gilanci-lintのオプション設定ファイルを指定（作業dirからの相対パス）
-          golangci_lint_flags: "--config=../../.github/golangci.yaml"
+          golangci_lint_flags: "--config=${{ github.workspace }}/.github/golangci.yaml"
           # go modがあるdirを作業dirにする
           workdir: app/src
           reporter: github-pr-review
